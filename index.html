@@ -1,5 +1,11 @@
 <html>
   <head>
+    <style>
+      .selector {
+        background-color: red;
+      }
+    </style>
+    <title>Stack using Array</title>
     <link rel="stylesheet" href="css/style.css" />
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/script.js"></script>
@@ -56,14 +62,114 @@
       </div>
     </div>
 
+    <!-- =========== Push question popup ========== -->
+    <div class="question-modal" id="pushmodal">
+      <div id="modal-head">
+        <h2
+          style="
+            text-align: left;
+            color: #000;
+            text-shadow: none;
+            margin-top: 0px;
+          "
+        >
+          Test Your Knowledge : Push()
+        </h2>
+        <span class="close-push close-btn">&times;</span>
+      </div>
+      <div id="modal-content">
+        <div id="question">
+          If anyone tries to insert an element on a stack whose all places are
+          occupied, What will happen in this condition
+        </div>
+        <div id="answer">
+          <div id="ans-left">
+            <div id="option-a" class="option">Push</div>
+            <div id="option-c" class="option">Pop</div>
+          </div>
+          <div id="ans-right">
+            <div id="option-b" class="option">Underflow</div>
+            <div id="option-d" class="option">Overflow</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ======== Push question popup ends ======== -->
+
+    <!-- =========== Pop question popup ========== -->
+    <div class="question-modal" id="popmodal">
+      <div id="modal-head">
+        <h2
+          style="
+            text-align: left;
+            color: #000;
+            text-shadow: none;
+            margin-top: 0px;
+          "
+        >
+          Test Your Knowledge : Pop()
+        </h2>
+        <span class="close-pop close-btn">&times;</span>
+      </div>
+      <div id="modal-content">
+        <div id="question">
+          What will happen if someone tries to remove an element from a stack
+          that has no element in it?
+        </div>
+        <div id="answer">
+          <div id="ans-left">
+            <div id="pop-a" class="option">Overflow</div>
+            <div id="pop-c" class="option">Pop</div>
+          </div>
+          <div id="ans-right">
+            <div id="pop-b" class="option">Underflow</div>
+            <div id="pop-d" class="option">Push</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ======== Pop question popup ends ======== -->
+
+    <!-- =========== IsEmpty question popup ========== -->
+    <div class="question-modal" id="emptymodal">
+      <div id="modal-head">
+        <h2
+          style="
+            text-align: left;
+            color: #000;
+            text-shadow: none;
+            margin-top: 0px;
+          "
+        >
+          Test Your Knowledge : IsEmpty()
+        </h2>
+        <span class="close-empty close-btn">&times;</span>
+      </div>
+      <div id="modal-content">
+        <div id="question">
+          What is the role of Isempty() function in Stack and What can we check
+          using this function
+        </div>
+        <div id="answer">
+          <div id="ans-left">
+            <div id="empty-a" class="option">Underflow</div>
+            <div id="empty-c" class="option">Overflow</div>
+          </div>
+          <div id="ans-right">
+            <div id="empty-b" class="option">Space available</div>
+            <div id="empty-d" class="option">To Pop the stack</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ======== IsEmpty question popup ends ======== -->
+
     <!-- Wrapper for whole HTML document -->
     <div class="wrapper">
       <div id="container">
         <!-- ======= This is Canvas area ========= -->
         <div id="canvas" class="box box-full">
-          <h2>
-            Implementation of stack using array
-          </h2>
+          <h2 style="text-align: left">Implementation of stack using array</h2>
 
           <!-- Canvas Element to draw Animations -->
           <div id="canvas-wrapper">
@@ -71,81 +177,109 @@
               <div id="array-wrapper">
                 <div id="array"></div>
               </div>
-              <span style="margin-left: 370px; font-size: large">Array</span>
+              <span
+                style="
+                  position: relative;
+                  display: block;
+                  font-size: 16px;
+                  margin: 10px 250px;
+                "
+                >Array</span
+              >
               <div id="lowerbound">
                 <div id="stack-wrapper">
                   <div id="stack"></div>
-                  <span style="margin-left: 70px; font-size: large">Stack</span>
+                  <span
+                    style="
+                      position: relative;
+                      display: block;
+                      font-size: 16px;
+                      margin: 10px 70px;
+                    "
+                    >Stack</span
+                  >
                 </div>
-                <div id="moveable">
-                  <div id="handle"></div>
-                  <h3>Enter the values to perform Stack Operations</h3>
-                  <!-- Form Inputs -->
-                  <div class="inputs">
-                    <!-- ====== pushing element ====== -->
-                    <div class="form-row">
-                      <input
-                        type="text"
-                        id="push-item"
-                        name="push-item"
-                        class="input"
-                        placeholder="Enter Element"
-                        required
-                      />
-                    </div>
-        
-                    <!-- ======== popping element ======== -->
-                    <div class="form-row">
-                      <input
-                        type="submit"
-                        name="push-btn"
-                        value="Push"
-                        onclick="push()"
-                        class="btn btn-green"
-                      />
-                      <input
-                        type="button"
-                        id="pop-item"
-                        name="pop-item"
-                        value="Pop "
-                        onclick="pop()"
-                        class="btn btn-red"
-                      />
-                    </div>
-        
-                    <!-- ========== Condition Check Buttons ========== -->
-                    <div class="form-row">
-                      <input
-                        type="button"
-                        name="ispeak"
-                        value="IsPeak?"
-                        onclick="ispeak()"
-                        class="btn btn-yellow"
-                      />
-                      <input
-                        type="button"
-                        name="isempty"
-                        value="IsEmpty?"
-                        onclick="isempty()"
-                        class="btn btn-blue"
-                      />
-                    </div>
-                  </div>
-                </div>      
+
+                <!-- =============== current step explanation =============== -->
+                <div id="algo-box">
+                  <li id="current_algo" class="algo-steps">
+                    >> INIT_STACK (STACK, TOP) <br />
+                    <br />
+
+                    Algorithm to initialize a stack using array. <br />
+                    TOP points to the top-most element of stack.<br />
+                    <br /><br />
+                    1) TOP: = 0; 2) Exit
+                  </li>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+        <!-- ======== Canvas area ends here ====== -->
 
-          <!-- Labels to show data steps -->
-          <div class="check" id="check">
-            <p id="label1"></p>
-            <p id="label2"></p>
+        <!-- ================ draggable input box =============== -->
+        <div id="moveable">
+          <div id="handle">
+            <span class="dragcontent"> Drag me Anywhere </span>
+          </div>
+          <p style="text-align: center; color: #ffd000; padding-top: 20px">
+            Enter the values to perform Stack Operations
+          </p>
+          <!-- Form Inputs -->
+          <div class="inputs">
+            <!-- ====== pushing element ====== -->
+            <div class="form-row">
+              <input
+                type="text"
+                id="push-item"
+                name="push-item"
+                class="input"
+                placeholder="Enter Element"
+                required
+              />
+            </div>
+
+            <!-- ======== popping element ======== -->
+            <div class="form-row">
+              <input
+                type="submit"
+                name="push-btn"
+                value="Push"
+                onclick="push()"
+                class="btn btn-green push-btn"
+              />
+              <input
+                type="button"
+                id="pop-item"
+                name="pop-item"
+                value="Pop "
+                onclick="pop()"
+                class="btn btn-red pop-btn"
+              />
+            </div>
+
+            <!-- ========== Condition Check Buttons ========== -->
+            <div class="form-row">
+              <input
+                type="button"
+                name="ispeak"
+                value="Peak"
+                onclick="ispeak()"
+                class="btn btn-yellow"
+              />
+              <input
+                type="button"
+                name="isempty"
+                value="IsEmpty?"
+                onclick="isempty()"
+                class="btn btn-blue"
+              />
+            </div>
           </div>
         </div>
-        <!-- ============= Canvas area ends here ============ -->
+        <!-- =============== draggable box ends here ============ -->
 
-        <!-- ========= This is Input Area ======== -->
-        
         <!-- ========= This is code area ========== -->
         <div id="code" class="box box-half">
           <h2>Events</h2>
@@ -154,7 +288,9 @@
             <!-- Start Box -->
             <div id="start-step" class="step-box">
               <h3 class="box-title">
-                Item <b class="highlight">"Pushed"</b> is
+                Item <br />
+                <b class="highlight">"Pushed"</b> <br />
+                is
               </h3>
               <h1 class="box-value" id="pushed"></h1>
             </div>
@@ -162,7 +298,9 @@
             <!-- Last Box -->
             <div id="last-step" class="step-box">
               <h3 class="box-title">
-                Item <b class="highlight">"Popped"</b> is
+                Item <br />
+                <b class="highlight">"Popped"</b> <br />
+                is
               </h3>
               <h1 class="box-value" id="popped"></h1>
             </div>
@@ -170,18 +308,23 @@
             <!-- PStack pointer Box -->
             <div id="mid-step" class="step-box">
               <h3 class="box-title">
-                Stack <b class="highlight">"Pointer"</b> is
+                Stack <br />
+                <b class="highlight">"Pointer"</b> <br />
+                is
               </h3>
               <h1 class="box-value" id="pointer">-1</h1>
             </div>
             <div id="blue-box" class="step-box">
               <h3 class="box-title">
-                Top <b class="highlight">"Element"</b> is
+                <b class="highlight">"Top"</b> <br />
+                Element <br />
+                is
               </h3>
               <h1 class="box-value" id="top_element"></h1>
             </div>
           </div>
         </div>
+        <!-- ========= code area ends here ======== -->
       </div>
     </div>
   </body>
